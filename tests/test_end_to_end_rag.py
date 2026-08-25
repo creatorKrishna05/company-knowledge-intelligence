@@ -1,3 +1,4 @@
+import pytest
 from pathlib import Path
 
 from ollama import Client
@@ -23,6 +24,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 PDF_PATH = PROJECT_ROOT / "data" / "company_knowledge_test.pdf"
 
 
+@pytest.mark.ollama
 def test_end_to_end_rag():
 
     # Ingestion

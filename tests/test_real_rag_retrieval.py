@@ -1,3 +1,4 @@
+import pytest
 from app.embedding.ollama import OllamaEmbedder
 from app.vector_store.in_memory import InMemoryVectorStore
 from app.retrieval_service import RetrievalService
@@ -5,6 +6,7 @@ from domain.chunks import Chunk
 from ollama import Client
 
 
+@pytest.mark.ollama
 def test_real_ollama_retrieval():
 
     client = Client()
