@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 from ollama import Client
 
@@ -42,7 +43,9 @@ def create_rag():
         overlap=20,
     )
 
-    client = Client()
+    client = Client(
+        host=os.getenv("OLLAMA_HOST", "http://localhost:11434")
+    )
 
     embedder = OllamaEmbedder(
         client=client,
