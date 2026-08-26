@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: ["main"]
 
+permissions:
+  contents: read
+
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
@@ -33,13 +36,42 @@ jobs:
           docker build \
             -t ${{ secrets.DOCKERHUB_USERNAME }}/company-knowledge-intelligence:latest .
 
+      # -------------------------
+      # Docker Hub
+      # -------------------------
+
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Push Docker image
+      - name: Push Docker image to Docker Hub
         run: |
           docker push \
             ${{ secrets.DOCKERHUB_USERNAME }}/company-knowledge-intelligence:latest
+
+      # -------------------------
+      # AWS ECR
+      # -------------------------
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-north-1
+
+      - name: Login to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Tag image for Amazon ECR
+        run: |
+          docker tag \
+            ${{ secrets.DOCKERHUB_USERNAME }}/company-knowledge-intelligence:latest \
+            269744750951.dkr.ecr.eu-north-1.amazonaws.com/company-knowledge-intelligence:latest
+
+      - name: Push Docker image to Amazon ECR
+        run: |
+          docker push \
+            269744750951.dkr.ecr.eu-north-1.amazonaws.com/company-knowledge-intelligence:latest
