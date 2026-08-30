@@ -1,0 +1,189 @@
+Folder PATH listing
+Volume serial number is 000000D4 10C9:ECFD
+C:.
+|   .dockerignore
+|   .env
+|   .gitignore
+|   cloudflared.exe
+|   Dockerfile
+|   LICENSE
+|   pytest.ini
+|   requirements.txt
+|   streamlit_app.py
+|   structure.txt
+|   
++---.github
+|   \---workflows
+|           ci.yml
+|           
++---.pytest_cache
+|   |   .gitignore
+|   |   CACHEDIR.TAG
+|   |   README.md
+|   |   
+|   \---v
+|       \---cache
+|               lastfailed
+|               nodeids
+|               
++---app
+|   |   answer_generator.py
+|   |   config.py
+|   |   context_builder.py
+|   |   indexing_service.py
+|   |   knowledge_ingestion_service.py
+|   |   rag_service.py
+|   |   retrieval_service.py
+|   |   
+|   +---chunking
+|   |   |   base.py
+|   |   |   recursive_chunker.py
+|   |   |   
+|   |   \---__pycache__
+|   |           base.cpython-313.pyc
+|   |           recursive_chunker.cpython-313.pyc
+|   |           
+|   +---cleaning
+|   |   |   base.py
+|   |   |   text_cleaner.py
+|   |   |   
+|   |   \---__pycache__
+|   |           text_cleaner.cpython-313.pyc
+|   |           
+|   +---embedding
+|   |   |   base.py
+|   |   |   huggingface.py
+|   |   |   ollama.py
+|   |   |   
+|   |   \---__pycache__
+|   |           base.cpython-313.pyc
+|   |           huggingface.cpython-313.pyc
+|   |           ollama.cpython-313.pyc
+|   |           
+|   +---ingestion
+|   |   |   registry.py
+|   |   |   service.py
+|   |   |   
+|   |   +---loaders
+|   |   |   |   base.py
+|   |   |   |   pdf_loader.py
+|   |   |   |   
+|   |   |   \---__pycache__
+|   |   |           base.cpython-313.pyc
+|   |   |           pdf_loader.cpython-313.pyc
+|   |   |           
+|   |   \---__pycache__
+|   |           registry.cpython-313.pyc
+|   |           service.cpython-313.pyc
+|   |           
+|   +---llm
+|   |   |   base.py
+|   |   |   factory.py
+|   |   |   groq_client.py
+|   |   |   groq_llm.py
+|   |   |   ollama_client.py
+|   |   |   ollama_llm.py
+|   |   |   
+|   |   \---__pycache__
+|   |           base.cpython-313.pyc
+|   |           factory.cpython-313.pyc
+|   |           groq_client.cpython-313.pyc
+|   |           groq_llm.cpython-313.pyc
+|   |           ollama_client.cpython-313.pyc
+|   |           ollama_llm.cpython-313.pyc
+|   |           
+|   +---vector_store
+|   |   |   base.py
+|   |   |   in_memory.py
+|   |   |   
+|   |   \---__pycache__
+|   |           base.cpython-313.pyc
+|   |           in_memory.cpython-313.pyc
+|   |           
+|   \---__pycache__
+|           answer_generator.cpython-313.pyc
+|           config.cpython-313.pyc
+|           context_builder.cpython-313.pyc
+|           indexing_service.cpython-313.pyc
+|           knowledge_ingestion_service.cpython-313.pyc
+|           rag_service.cpython-313.pyc
+|           retrieval_service.cpython-313.pyc
+|           
++---data
+|       company_knowledge_test.pdf
+|       
++---domain
+|   |   chunks.py
+|   |   documents.py
+|   |   __init__.py
+|   |   
+|   \---__pycache__
+|           chunks.cpython-313.pyc
+|           documents.cpython-313.pyc
+|           __init__.cpython-313.pyc
+|           
++---tests
+|   |   test_answer_generator.py
+|   |   test_chunker.py
+|   |   test_chunks.py
+|   |   test_complete_rag_integration.py
+|   |   test_config.py
+|   |   test_context_builder.py
+|   |   test_embedding.py
+|   |   test_end_to_end_rag.py
+|   |   test_groq_client.py
+|   |   test_groq_llm.py
+|   |   test_indexing_service.py
+|   |   test_ingestion_service.py
+|   |   test_knowledge_ingestion_service.py
+|   |   test_llm.py
+|   |   test_llm_factory.py
+|   |   test_loader_registry.py
+|   |   test_ollama_client.py
+|   |   test_ollama_llm.py
+|   |   test_pdf_indexing_integration.py
+|   |   test_pdf_loader.py
+|   |   test_rag_integration.py
+|   |   test_rag_pipeline_integration.py
+|   |   test_rag_service.py
+|   |   test_real_pdf_rag.py
+|   |   test_real_rag_retrieval.py
+|   |   test_recursive_chunker.py
+|   |   test_retrieval.py
+|   |   test_text_cleaner.py
+|   |   test_vector_store.py
+|   |   
+|   \---__pycache__
+|           test_answer_generator.cpython-313-pytest-9.1.1.pyc
+|           test_chunker.cpython-313-pytest-9.1.1.pyc
+|           test_chunks.cpython-313-pytest-9.1.1.pyc
+|           test_complete_rag_integration.cpython-313-pytest-9.1.1.pyc
+|           test_config.cpython-313-pytest-9.1.1.pyc
+|           test_context_builder.cpython-313-pytest-9.1.1.pyc
+|           test_embedding.cpython-313-pytest-9.1.1.pyc
+|           test_end_to_end_rag.cpython-313-pytest-9.1.1.pyc
+|           test_groq_client.cpython-313-pytest-9.1.1.pyc
+|           test_groq_llm.cpython-313-pytest-9.1.1.pyc
+|           test_indexing_service.cpython-313-pytest-9.1.1.pyc
+|           test_ingestion_service.cpython-313-pytest-9.1.1.pyc
+|           test_knowledge_ingestion_service.cpython-313-pytest-9.1.1.pyc
+|           test_llm.cpython-313-pytest-9.1.1.pyc
+|           test_llm_factory.cpython-313-pytest-9.1.1.pyc
+|           test_loader_registry.cpython-313-pytest-9.1.1.pyc
+|           test_ollama_client.cpython-313-pytest-9.1.1.pyc
+|           test_ollama_llm.cpython-313-pytest-9.1.1.pyc
+|           test_pdf_indexing_integration.cpython-313-pytest-9.1.1.pyc
+|           test_pdf_loader.cpython-313-pytest-9.1.1.pyc
+|           test_rag_integration.cpython-313-pytest-9.1.1.pyc
+|           test_rag_pipeline_integration.cpython-313-pytest-9.1.1.pyc
+|           test_rag_service.cpython-313-pytest-9.1.1.pyc
+|           test_real_pdf_rag.cpython-313-pytest-9.1.1.pyc
+|           test_real_rag_retrieval.cpython-313-pytest-9.1.1.pyc
+|           test_recursive_chunker.cpython-313-pytest-9.1.1.pyc
+|           test_retrieval.cpython-313-pytest-9.1.1.pyc
+|           test_text_cleaner.cpython-313-pytest-9.1.1.pyc
+|           test_vector_store.cpython-313-pytest-9.1.1.pyc
+|           
+\---__pycache__
+        app.cpython-313.pyc
+        

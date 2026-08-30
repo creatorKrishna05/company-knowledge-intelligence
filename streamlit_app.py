@@ -1,13 +1,17 @@
 import os
 import streamlit as st
-from ollama import Client
+from huggingface_hub import InferenceClient
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from app.ingestion.registry import LoaderRegistry
 from app.ingestion.service import IngestionService
 from app.ingestion.loaders.pdf_loader import PDFLoader
 from app.cleaning.text_cleaner import TextCleaner
 from app.chunking.recursive_chunker import RecursiveChunker
-from app.embedding.ollama import OllamaEmbedder
+from app.embedding.huggingface import HuggingFaceEmbedder
 from app.indexing_service import IndexingService
 from app.vector_store.in_memory import InMemoryVectorStore
 from app.retrieval_service import RetrievalService
@@ -15,9 +19,9 @@ from app.context_builder import ContextBuilder
 from app.answer_generator import AnswerGenerator
 from app.rag_service import RAGService
 from app.knowledge_ingestion_service import KnowledgeIngestionService
-from app.llm.ollama_client import create_ollama_client
-from app.llm.ollama_llm import OllamaLLM
-
+from app.llm.groq_client import create_groq_client
+from app.llm.groq_llm import GroqLLM
+from app.config import Settings
 
 st.set_page_config(
     page_title="Company Knowledge Intelligence",
@@ -42,15 +46,14 @@ def create_rag():
         chunk_size=100,
         overlap=20,
     )
-
-    client = Client(
-        host=os.getenv("OLLAMA_HOST", "http://localhost:11434")
+    hf_client = InferenceClient(
+        token=os.getenv("HF_TOKEN")
     )
 
-    embedder = OllamaEmbedder(
-        client=client,
-        model="nomic-embed-text",
-        dimension=768,
+    embedder = HuggingFaceEmbedder(
+        client=hf_client,
+        model="sentence-transformers/all-MiniLM-L6-v2",
+        dimension=384,
     )
 
     vector_store = InMemoryVectorStore()
@@ -76,9 +79,11 @@ def create_rag():
 
     context_builder = ContextBuilder()
 
-    llm = OllamaLLM(
-        client=create_ollama_client(),
-        model="llama3.2",
+    settings = Settings()
+
+    llm = GroqLLM(
+        client=create_groq_client(settings.groq_api_key),
+        model="openai/gpt-oss-120b",
     )
 
     answer_generator = AnswerGenerator(llm)

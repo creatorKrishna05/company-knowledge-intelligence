@@ -3,3 +3,4 @@ python-dotenv==1.2.2
 pypdf==6.15.0
 groq==0.37.1
 ollama==0.6.2
+huggingface_hub
