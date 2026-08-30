@@ -698,7 +698,7 @@ Potential future enhancements include:
 
 # 👨‍💻 Author
 
-## Kanchan Nishad
+## creatorKrishna
 
 Aspiring **AI/ML Engineer** focused on:
 
